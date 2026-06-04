@@ -1,4 +1,5 @@
-import { expect, $, browser } from '@wdio/globals'
+import { expect, $, $$, browser } from '@wdio/globals'
+import fs from 'fs'
 import LoginPage from '../pageobjects/login.page.js'
 import InventoryPage from '../pageobjects/inventory.page.js'
 
@@ -40,29 +41,27 @@ describe('SauceDemo Cart tests', () => {
             console.log('DEBUG: URL after login ->', url)
             // try to save full HTML via element API (more robust with DevTools)
             try {
-                const html = await (await $('html')).getHTML(false)
-                const fs = require('fs')
+                const html = await (await $('html')).getHTML(false as any)
                 const dir = './debug'
-                try { fs.mkdirSync(dir, { recursive: true }) } catch(e) {}
+                try { fs.mkdirSync(dir, { recursive: true }) } catch (e) { }
                 const file = `${dir}/html-after-login-${Date.now()}.html`
                 fs.writeFileSync(file, html)
                 console.log('DEBUG: saved HTML to', file)
-            } catch (e) {
+            } catch (e: any) {
                 console.log('DEBUG: failed to save HTML ->', e && e.message)
             }
 
             // try to collect performance entries (resources loaded)
             try {
-                const perf = await browser.execute(() => { try { return performance.getEntries() } catch(e) { return null } })
+                const perf = await browser.execute(() => { try { return performance.getEntries() } catch (e) { return null } })
                 if (perf) {
-                    const fs = require('fs')
                     const dir = './debug'
-                    try { fs.mkdirSync(dir, { recursive: true }) } catch(e) {}
+                    try { fs.mkdirSync(dir, { recursive: true }) } catch (e) { }
                     const file = `${dir}/perf-after-login-${Date.now()}.json`
                     fs.writeFileSync(file, JSON.stringify(perf, null, 2))
                     console.log('DEBUG: saved performance entries to', file)
                 }
-            } catch (e) {
+            } catch (e: any) {
                 console.log('DEBUG: failed to save perf entries ->', e && e.message)
             }
 

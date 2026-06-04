@@ -12,21 +12,23 @@ class InventoryPage extends Page {
 
     public async addFirstProductToCart() {
         const items = await this.inventoryItems
-        if (!items || items.length === 0) throw new Error('No inventory items found')
+        if (!items) throw new Error('No inventory items found')
+        const count = await items.length
+        if (count === 0) throw new Error('No inventory items found')
         const first = items[0]
         const btn = await first.$('button')
         await btn.waitForExist({ timeout: 5000 })
         try {
             await btn.scrollIntoView()
-        } catch {}
+        } catch { }
         try {
             await btn.moveTo()
-        } catch {}
+        } catch { }
         try {
             await btn.waitForClickable({ timeout: 5000 })
             await btn.click()
             return
-        } catch (err) {}
+        } catch (err) { }
         // fallback: click via DOM using index or id to avoid passing element handles
         const id = await btn.getAttribute('id')
         if (id) {
