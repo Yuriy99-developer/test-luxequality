@@ -1,6 +1,6 @@
 import { expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
-import InventoryPage from '../pageobjects/inventory.page.js'
+import LoginPage from '../pageobjects/login.page.ts'
+import InventoryPage from '../pageobjects/inventory.page.ts'
 
 describe('SauceDemo Login tests', () => {
     it('Valid Login with standard_user', async () => {

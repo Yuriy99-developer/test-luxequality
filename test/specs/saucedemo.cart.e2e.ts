@@ -1,7 +1,7 @@
 import { expect, $, $$, browser } from '@wdio/globals'
 import fs from 'fs'
-import LoginPage from '../pageobjects/login.page.js'
-import InventoryPage from '../pageobjects/inventory.page.js'
+import LoginPage from '../pageobjects/login.page.ts'
+import InventoryPage from '../pageobjects/inventory.page.ts'
 
 describe('SauceDemo Cart tests', () => {
     it('Saving the cart after logout', async () => {

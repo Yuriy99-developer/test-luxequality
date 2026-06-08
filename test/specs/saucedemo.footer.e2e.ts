@@ -1,5 +1,5 @@
 import { expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
+import LoginPage from '../pageobjects/login.page.ts'
 
 describe('SauceDemo Footer Links', () => {
     it('Footer links open valid targets', async () => {

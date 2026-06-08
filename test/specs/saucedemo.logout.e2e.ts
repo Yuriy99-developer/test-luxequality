@@ -1,6 +1,6 @@
 import { expect, browser } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
-import InventoryPage from '../pageobjects/inventory.page.js'
+import LoginPage from '../pageobjects/login.page.ts'
+import InventoryPage from '../pageobjects/inventory.page.ts'
 
 describe('SauceDemo Logout tests', () => {
     it('Logout returns to login page and clears fields', async () => {

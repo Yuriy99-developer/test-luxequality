@@ -1,5 +1,5 @@
 import { $ } from '@wdio/globals'
-import Page from './page.js';
+import Page from './page.ts';
 
 class CheckoutPage extends Page {
     public get firstName() { return $('#first-name'); }

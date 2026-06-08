@@ -1,6 +1,6 @@
 import { expect } from '@wdio/globals'
-import LoginPage from '../pageobjects/login.page.js'
-import InventoryPage from '../pageobjects/inventory.page.js'
+import LoginPage from '../pageobjects/login.page.ts'
+import InventoryPage from '../pageobjects/inventory.page.ts'
 
 describe('SauceDemo Sorting tests', () => {
     it('Verify sorting options work', async () => {
@@ -8,7 +8,7 @@ describe('SauceDemo Sorting tests', () => {
         await LoginPage.login('standard_user', 'secret_sauce')
 
         // values: "az", "za", "lohi", "hilo" (depends on the site)
-        const options = ['lohi','hilo','az','za']
+        const options = ['lohi', 'hilo', 'az', 'za']
         for (const opt of options) {
             await InventoryPage.selectSort(opt)
             const items = await InventoryPage.inventoryItems
